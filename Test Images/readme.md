@@ -1,1 +1,1 @@
-# [RETURN TO MAIN](../main/README.md)
+# [RETURN TO MAIN](../README.md)
