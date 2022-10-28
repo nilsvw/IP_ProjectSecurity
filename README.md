@@ -25,7 +25,7 @@ Requirements:
 
 
 
-Update line 66 in scanner.py -> Own Python-tesseract location
+Update line 67 in scanner.py -> Own Python-tesseract location
 
 Running 'python scanner.py' in terminal will run the program
 
