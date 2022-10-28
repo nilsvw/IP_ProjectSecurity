@@ -29,7 +29,7 @@ Update line 66 in scanner.py -> Own Python-tesseract location
 
 Running 'python scanner.py' in terminal will run the program
 
-Can add own Blacklisten Email addresses in blacklist.txt
+Can add own Blacklisted Email addresses in blacklist.txt
 
 -----
 ## Author
