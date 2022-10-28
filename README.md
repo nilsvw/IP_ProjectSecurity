@@ -13,7 +13,7 @@ This is an individual project. I have been tasked with creating a Cyber Security
 -----
 
 ## Setup
-This is a Python Script with a Blacklist text file. There are also a few test images. 
+This is a Python Script with a Blacklist text file. There are also a few [test images](.//test images). 
 
 Requirements:
 
