@@ -18,8 +18,11 @@ This is a Python Script with a Blacklist text file. There are also a few test im
 Requirements:
 
 Python3 (https://www.python.org/downloads/)
+
 OpenCV-python (pip install opencv-python)
+
 Python-tesseract (pip install pytesseract)
+
 
 Update line 66 in scanner.py -> Own Python-tesseract location
 
