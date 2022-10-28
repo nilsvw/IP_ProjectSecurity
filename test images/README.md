@@ -5,7 +5,7 @@ Can use these Images to test the script
 -----
 Email
 
-[alt text](https://github.com/nilsvw/IP_ProjectSecurity/test%20images/email.png
+[alt text](https://github.com/nilsvw/IP_ProjectSecurity/test%20images/email.png)
 
 -----
 
