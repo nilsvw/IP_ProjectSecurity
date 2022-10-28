@@ -4,7 +4,8 @@ Can use these Images to test the script
 
 -----
 [Email](https://github.com/nilsvw/IP_ProjectSecurity/blob/main/test%20images/email.png)
-<img src="https://github.com/nilsvw/IP_ProjectSecurity/blob/main/test%20images/email.png" alt="alt" title="title">
+
+<img src="https://github.com/nilsvw/IP_ProjectSecurity/blob/main/test%20images/email.png" title="email">
 
 [Url](https://github.com/nilsvw/IP_ProjectSecurity/blob/main/test%20images/url.png)
 
