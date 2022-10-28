@@ -63,7 +63,8 @@ def image():
     Checks if image conrains a link 
     """
     # Location where Tesseract is installed (Required on Windows)
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Users\NilsP\AppData\Local\Tesseract-OCR\tesseract.exe'
+    # Example: r'C:\Users\NilsP\AppData\Local\Tesseract-OCR\tesseract.exe'
+    pytesseract.pytesseract.tesseract_cmd = ''
 
     foundFlags = []
     foundSpam = []
