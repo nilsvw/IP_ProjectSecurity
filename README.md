@@ -1,7 +1,7 @@
 # IP ProjectSecurity
 Phising Email Detection on Image level
 
-Duration of Project: 08-09-2022 / 28-10-2022
+Duration of Project: 08-09-2022 / 14-11-2022
 
 Version 1.0
 
