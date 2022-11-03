@@ -2,6 +2,8 @@ import cv2
 import pytesseract
 from urllib.request import urlopen
 import json
+import random
+import datetime
 
 
 __author__ = "Nils van Witzenburg 500849196"
@@ -18,6 +20,7 @@ def start_up():
     print("| Path Example: C:\\Users\\NilsP\Desktop\\tekst.png         |")
     print("| Or 'tekst.png' if script in same directory             |")
     print("|--------------------------------------------------------|")
+    print("DISCLAIMER: SCRIPT ONLY SCANS VISABLE LINKS AND EMAIL ADDRESSES\nSCRIPT CAN FALSE FLAG")
 
 def text():
     """ 
@@ -63,8 +66,7 @@ def image():
     Checks if image conrains a link 
     """
     # Location where Tesseract is installed (Required on Windows)
-    # Example: r'C:\Users\NilsP\AppData\Local\Tesseract-OCR\tesseract.exe'
-    pytesseract.pytesseract.tesseract_cmd = ''
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Users\NilsP\AppData\Local\Tesseract-OCR\tesseract.exe'
 
     foundFlags = []
     foundSpam = []
@@ -88,11 +90,12 @@ def image():
     with open('blacklist.txt') as f:
             for line in f:
                     blacklistDomains = line.strip()
-                    for i in text:
-                        for j in blacklistDomains:
-                            if j in text:
-                                flag = 1
-                                break 
+                    emailFound = text.split('@')[1]
+                    emailSplit = emailFound.split('.')[0]
+                    if emailSplit in blacklistDomains:
+                            flag = 1
+                            break
+
 
     # Check if blockedPun is in Domain
     for i in emailSplit:
@@ -140,20 +143,32 @@ def image():
             foundSpam.append("Found Malware: " + malware)
             foundSpam.append("Found Phishing " + phishing)
     if flagUrl == 0:
-            print("No URL's found")
+        print("No URL's found")
 
     # If flag found, print them
     if len(foundFlags) >= 1:
-            print(f"Found:\n{foundFlags}")
+        print(f"Found:\n{foundFlags}")
                 
     if len(foundSpam) >= 1:
-            print(f"Checks:\n{foundSpam}")
+        print(f"Checks:\n{foundSpam}")
+
+    # Create log file 
+    if len(foundFlags) >= 0 or len(foundSpam) >= 0:
+        randomId = random.randint(1,10000)                      
+        main = f"LOG FILE - ID:{randomId}"
+        currentTime = datetime.datetime.now()
+        date = currentTime.strftime("%Y-%m-%d %H:%M:%S")        
+        found = f"FOUND:\n{foundFlags}\nChecks:\n{foundSpam}"
+        with open(f'log_{randomId}.txt', 'w') as logFile:
+                logFile.write(f"{main}\nDate of Scan: [{date}]\n\n{found}\n\nContent of Image:\n{text}")
+
 
     print("Do you want to see all found text of image? (Y/n)")
     answer = input()
     if answer == 'Y'.lower():
-            print(f"**START**\n{text}\n**END**")
+        print(f"**START**\n{text}\n**END**")
 
+        
 
 def option():
     """
@@ -177,9 +192,9 @@ def main():
 
     print("\033[1m" + "PLEASE NOTE"+
     "\n- Double check the content of the email" +
-    "\n- Don't click any links unless you trust the source" +
-    "\n- Double check the email address" + 
-    "\n- Script can false flag" + "\033[0m")
+    "\n- Double check the email address" +
+    "\n- Don't click any links" +     
+    "\n- Send the log file to IT department" + "\033[0m")
 
     print("Do you want to run the script again? (Y/n)")
     answer = input()
@@ -188,5 +203,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
 
 
