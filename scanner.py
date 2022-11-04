@@ -63,7 +63,8 @@ def image():
     Scans all text of image
     Checks if image contains word(s) from 'Blacklist.txt'
     Checks if image contains punctuation (Email domain)
-    Checks if image conrains a link 
+    Checks if image conrains a link
+    Creates Log file after scan
     """
     # Location where Tesseract is installed (Required on Windows)
     pytesseract.pytesseract.tesseract_cmd = r'C:\Users\NilsP\AppData\Local\Tesseract-OCR\tesseract.exe'
@@ -72,7 +73,7 @@ def image():
     foundSpam = []
 
     blockedPun = ['-']
-    urlFound = ['https', 'http']
+    urlFound = ['https']
     flag = 0
     flagUrl = 0
        
@@ -82,7 +83,8 @@ def image():
     img = cv2.imread(path)
     # Store all found text in 'text'
     text = pytesseract.image_to_string(img)
-    # Only check text after @
+    # Only check text after @ and before .
+    # This means 'Nils.van.Witzenburg@hva.nl' -> 'hva' will be scanned
     emailFound = text.split('@')[1]
     emailSplit = emailFound.split('.')[0]
         
@@ -122,10 +124,12 @@ def image():
             warning = f"WARNING: Potentially dangerous link found"
             foundFlags.append(warning)
 
-            # Remove any whitespace from text                               
+            # Remove any whitespace from text
+            # Prevents potential wrong-read text                            
             foundText = ("".join(text.split()))
 
             # Save url found without the https://
+            # 'https://www.paypal.com donate now' -> 'www.paypal.com'
             allText = foundText.split("https://")[1]
             fullUrl = allText.split(' ')[0]
 
@@ -203,6 +207,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
 
 
 
