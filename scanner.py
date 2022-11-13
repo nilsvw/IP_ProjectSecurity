@@ -63,7 +63,7 @@ def image():
     Scans all text of image
     Checks if image contains word(s) from 'Blacklist.txt'
     Checks if image contains punctuation (Email domain)
-    Checks if image conrains a link
+    Checks if image contains a link
     Creates Log file after scan
     """
     # Location where Tesseract is installed (Required on Windows)
